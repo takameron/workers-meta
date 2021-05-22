@@ -26,5 +26,9 @@
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "@types/open-graph-scraper": "^4.8.0",
+    "open-graph-scraper": "^4.8.2"
   }
 }
