@@ -1,7 +1,7 @@
 type = "webpack"
 zone_id = ""
-account_id = ""
+account_id = "49f956d76e89a09b797eafdfbffd4b07"
 route = ""
 workers_dev = true
 webpack_config = "webpack.config.js"
-name = "ogp"
+name = "meta"
