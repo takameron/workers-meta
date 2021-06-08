@@ -29,7 +29,6 @@ export async function handleRequest(request: Request): Promise<Response> {
   res["sredirected"] = response.redirected
   res["status"] = response.status
   res["statusText"] = response.statusText
-  res["type"] = response.type
   res["url"] = response.url
   if (response.body) {
     const arraybuffer: ArrayBuffer = await response.arrayBuffer()
