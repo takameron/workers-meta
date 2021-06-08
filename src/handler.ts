@@ -42,9 +42,11 @@ export async function handleRequest(request: Request): Promise<Response> {
         tags.forEach(tag => {
           const key = tag.match(/(?<=(property|name|itemprop)=")[\s\S]+?(?=")/i)
           const value = tag.match(/(?<=content=")[\s\S]+?(?=")/i)
-          if (key && value)
-            // key is unified to lowercase
-            res[String(key[0]).toLowerCase()] = String(value[0])
+          if (key && value) {
+            // key is unified to lowercase and replace ':' to '_'
+            const shapedkey = String(key[0]).toLowerCase().replace(':','_')
+            res[shapedkey] = String(value[0])
+          }
         })
       }
     }
