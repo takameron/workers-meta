@@ -22,9 +22,15 @@ export async function handleRequest(request: Request): Promise<Response> {
     targetURL = "http://" + targetURL
   }
 
-  let res: { [key: string]: string; } = {};
+  let res: { [key: string]: string | number | boolean; } = {};
 
   const response: Response = await fetch(targetURL)
+  res["success"] = response.ok
+  res["sredirected"] = response.redirected
+  res["status"] = response.status
+  res["statusText"] = response.statusText
+  res["type"] = response.type
+  res["url"] = response.url
   if (response.body) {
     const arraybuffer: ArrayBuffer = await response.arrayBuffer()
     const array: Uint8Array = new Uint8Array(arraybuffer)
