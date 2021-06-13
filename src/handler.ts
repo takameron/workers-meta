@@ -40,7 +40,7 @@ export async function handleRequest(request: Request): Promise<Response> {
     const html: string = iconv.decode(array, encoding);
 
     // Analysis of meta tags
-    const head = html.match(/<head>[\s\S]*?<\/head>/i)
+    const head = html.match(/<head[\s\S]*?<\/head>/i)
     if (head) {
       const tags = head[0].match(/<meta[\s\S]*?>/gi)
       if (tags) {
