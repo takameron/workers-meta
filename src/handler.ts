@@ -42,6 +42,13 @@ export async function handleRequest(request: Request): Promise<Response> {
     // Analysis of meta tags
     const head = html.match(/<head[\s\S]*?<\/head>/i)
     if (head) {
+      // title tag
+      const title = head[0].match(/(?<=<title>)[\s\S]+?(?=<\/title>)/i)
+      if (title) {
+        res["title"] = String(title[0])
+      }
+
+      // meta tags
       const tags = head[0].match(/<meta[\s\S]*?>/gi)
       if (tags) {
         tags.forEach(tag => {
