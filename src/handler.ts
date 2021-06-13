@@ -26,7 +26,7 @@ export async function handleRequest(request: Request): Promise<Response> {
 
   const response: Response = await fetch(targetURL)
   res["success"] = response.ok
-  res["sredirected"] = response.redirected
+  res["redirected"] = response.redirected
   res["status"] = response.status
   res["statusText"] = response.statusText
   res["url"] = response.url
