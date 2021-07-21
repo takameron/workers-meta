@@ -24,7 +24,12 @@ export async function handleRequest(request: Request): Promise<Response> {
 
   let res: { [key: string]: string | number | boolean; } = {};
 
-  const response: Response = await fetch(targetURL)
+  const response: Response = await fetch(targetURL, {
+    cf: {
+      cacheTtl: 43200,
+      cacheEverything: true
+    },
+  })
   res["success"] = response.ok
   res["redirected"] = response.redirected
   res["status"] = response.status
