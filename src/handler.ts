@@ -37,7 +37,9 @@ export async function handleRequest(request: Request): Promise<Response> {
     // Decode
     const encoding: string = chardet.detect(array)!.toString()
     if (!encoding) throw new Error();
-    const html: string = iconv.decode(array, encoding);
+    const rawhtml: string = iconv.decode(array, encoding);
+    // HTML decode
+    const html: string = rawhtml.replace(/&#(\d+);/g, (all, $1)=>{return String.fromCharCode(parseInt($1))})
 
     // Analysis of meta tags
     const head = html.match(/<head[\s\S]*?<\/head>/i)
